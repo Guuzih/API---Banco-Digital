@@ -39,120 +39,121 @@ Neste desafio, fomos desafiados a aplicar o conhecimento adquirido durante o seg
 
 Utilizando o Insomnia, importe o arquivo `rotas_insomnia` disponível junto com o projeto.
 
-## Documentação API
+# Documentação API
 
-### 1. Listar Todas as Contas Bancárias Cadastradas
+## Índice
 
-Este endpoint permite listar todas as contas bancárias cadastradas.
+- [Listar Contas Bancárias](#listar-contas-bancárias)
+- [Criar Conta Bancária](#criar-conta-bancária)
+- [Atualizar Usuário da Conta Bancária](#atualizar-usuário-da-conta-bancária)
+- [Excluir Conta Bancária](#excluir-conta-bancária)
+- [Depositar](#depositar)
+- [Sacar](#sacar)
+- [Transferir](#transferir)
+- [Consultar Saldo da Conta Bancária](#consultar-saldo-da-conta-bancária)
+- [Emitir Extrato Bancário](#emitir-extrato-bancário)
 
-Endpoint: GET /contas?senha_banco=Cubos123Bank
+## Listar Contas Bancárias
 
-Parâmetros:
+**Endpoint:** `GET /contas?senha_banco=Cubos123Bank`
 
-senha_banco (string, obrigatório): A senha de autenticação do banco.
-Descrição: Para acessar as informações, é necessário fornecer a senha de autenticação do banco (senha_banco) utilizando o parâmetro de consulta na URL (query params).
+Este endpoint lista todas as contas bancárias existentes.
 
-### 2. Criar uma Conta Bancária
+- **Parâmetros:**
+  - `senha_banco` (string, obrigatório): Senha de autenticação do banco.
 
-Este endpoint permite criar uma nova conta bancária.
+## Criar Conta Bancária
 
-Endpoint: POST /contas
+**Endpoint:** `POST /contas`
 
-Parâmetros:
+Este endpoint cria uma nova conta bancária.
 
-nome (string, obrigatório): Nome do titular da conta.
-cpf (string, obrigatório): CPF do titular da conta.
-data_nascimento (string, obrigatório): Data de nascimento do titular da conta.
-telefone (string, obrigatório): Número de telefone do titular da conta.
-email (string, obrigatório): Endereço de email do titular da conta.
-senha (string, obrigatório): Senha para acessar a conta.
-Descrição: O CPF e o email devem ser únicos, ou seja, não podem estar associados a outra conta bancária cadastrada.
+- **Parâmetros no Corpo (Body):**
+  - `nome` (string, obrigatório): Nome do titular da conta.
+  - `cpf` (string, obrigatório): CPF do titular da conta.
+  - `data_nascimento` (string, obrigatório): Data de nascimento do titular da conta.
+  - `telefone` (string, obrigatório): Número de telefone do titular da conta.
+  - `email` (string, obrigatório): Endereço de email do titular da conta.
+  - `senha` (string, obrigatório): Senha para acessar a conta.
 
-### 3. Atualizar Dados do Usuário da Conta Bancária
+## Atualizar Usuário da Conta Bancária
 
-Este endpoint permite atualizar os dados do usuário associados a uma conta bancária específica.
+**Endpoint:** `PUT /contas/:numeroConta/usuario`
 
-Endpoint: PUT /contas/:numeroConta/usuario
+Este endpoint atualiza os dados do usuário associados a uma conta bancária específica.
 
-Parâmetros:
+- **Parâmetros:**
 
-numeroConta (string, obrigatório): Número da conta bancária a ser atualizada.
-nome (string, obrigatório): Novo nome do titular da conta.
-cpf (string, obrigatório): Novo CPF do titular da conta.
-data_nascimento (string, obrigatório): Nova data de nascimento do titular da conta.
-telefone (string, obrigatório): Novo número de telefone do titular da conta.
-email (string, obrigatório): Novo endereço de email do titular da conta.
-senha (string, obrigatório): Nova senha para acessar a conta.
-Descrição: O CPF e o email devem ser únicos, ou seja, não podem estar associados a outra conta bancária cadastrada. Todos os dados precisam ser passados, mesmo aqueles que não serão atualizados. Para esses casos, basta repetir o valor anterior.
+  - `numeroConta` (string, obrigatório): Número da conta bancária a ser atualizada.
 
-### 4. Remover uma Conta Bancária
+- **Parâmetros no Corpo (Body):**
+  - `nome` (string, obrigatório): Novo nome do titular da conta.
+  - `cpf` (string, obrigatório): Novo CPF do titular da conta.
+  - `data_nascimento` (string, obrigatório): Nova data de nascimento do titular da conta.
+  - `telefone` (string, obrigatório): Novo número de telefone do titular da conta.
+  - `email` (string, obrigatório): Novo endereço de email do titular da conta.
+  - `senha` (string, obrigatório): Nova senha para acessar a conta.
 
-Este endpoint permite excluir uma conta bancária.
+## Excluir Conta Bancária
 
-Endpoint: DELETE /contas/:numeroConta
+**Endpoint:** `DELETE /contas/:numeroConta`
 
-Parâmetros:
+Este endpoint exclui uma conta bancária existente.
 
-numeroConta (string, obrigatório): Número da conta bancária a ser excluída.
-Descrição: A conta só pode ser excluída se o saldo for zero.
+- **Parâmetros:**
+  - `numeroConta` (string, obrigatório): Número da conta bancária a ser excluída.
 
-### 5. Depositar em uma Conta Bancária
+## Depositar
 
-Este endpoint permite fazer um depósito em uma conta bancária específica.
+**Endpoint:** `POST /transacoes/depositar`
 
-Endpoint: POST /transacoes/depositar
+Este endpoint realiza um depósito em uma conta bancária específica.
 
-Parâmetros:
+- **Parâmetros no Corpo (Body):**
+  - `numero_conta` (string, obrigatório): Número da conta bancária de destino do depósito.
+  - `valor` (number, obrigatório): Valor (em centavos) a ser depositado na conta.
 
-numero_conta (string, obrigatório): Número da conta bancária de destino do depósito.
-valor (number, obrigatório): Valor (em centavos) a ser depositado na conta.
-Descrição: O valor deve ser maior que zero.
+## Sacar
 
-### 6. Sacar de uma Conta Bancária
+**Endpoint:** `POST /transacoes/sacar`
 
-Este endpoint permite realizar um saque de uma conta bancária específica.
+Este endpoint realiza o saque de um valor em uma determinada conta bancária.
 
-Endpoint: POST /transacoes/sacar
+- **Parâmetros no Corpo (Body):**
+  - `numero_conta` (string, obrigatório): Número da conta bancária de onde será realizado o saque.
+  - `valor` (number, obrigatório): Valor (em centavos) a ser sacado da conta.
+  - `senha` (string, obrigatório): Senha para autenticar a operação do saque.
 
-Parâmetros:
+## Transferir
 
-numero_conta (string, obrigatório): Número da conta bancária de onde será realizado o saque.
-valor (number, obrigatório): Valor (em centavos) a ser sacado da conta.
-senha (string, obrigatório): Senha para autenticar a operação do saque.
-Descrição: O valor deve ser maior que zero.
+**Endpoint:** `POST /transacoes/transferir`
 
-### 7. Transferir Valores entre Contas Bancárias
+Este endpoint permite a transferência de recursos (dinheiro) de uma conta bancária para outra.
 
-Este endpoint permite transferir valores entre duas contas bancárias.
+- **Parâmetros no Corpo (Body):**
+  - `numero_conta_origem` (string, obrigatório): Número da conta bancária de origem da transferência.
+  - `numero_conta_destino` (string, obrigatório): Número da conta bancária de destino da transferência.
+  - `valor` (number, obrigatório): Valor (em centavos) a ser transferido entre as contas.
+  - `senha` (string, obrigatório): Senha para autenticar a operação de transferência.
 
-Endpoint: POST /transacoes/transferir
+## Consultar Saldo da Conta Bancária
 
-Parâmetros:
+**Endpoint:** `GET /contas/saldo`
 
-numero_conta_origem (string, obrigatório): Número da conta bancária de origem da transferência.
-numero_conta_destino (string, obrigatório): Número da conta bancária de destino da transferência.
-valor (number, obrigatório): Valor (em centavos) a ser transferido entre as contas.
-senha (string, obrigatório): Senha para autenticar a operação de transferência.
-Descrição: O valor deve ser maior que zero.
+Este endpoint retorna o saldo de uma conta bancária específica.
 
-### 8. Consultar Saldo da Conta Bancária
+- **Parâmetros de Consulta (Query Params):**
+  - `numero_conta` (string, obrigatório): Número da conta bancária para consultar o saldo.
+  - `senha` (string, obrigatório): Senha para autenticar a consulta de saldo.
 
-Este endpoint permite consultar o saldo de uma conta bancária específica.
+## Emitir Extrato Bancário
 
-Endpoint: GET /contas/saldo
+**Endpoint:** `GET /contas/extrato`
 
-Parâmetros:
+Este endpoint lista as transações realizadas de uma conta específica.
 
-numero_conta (string, obrigatório): Número da conta bancária para consultar o saldo.
-senha (string, obrigatório): Senha para autenticar a consulta de saldo.
+- **Parâmetros de Consulta (Query Params):**
+  - `numero_conta` (string, obrigatório): Número da conta bancária para emitir o extrato.
+  - `senha` (string, obrigatório): Senha para autenticar a emissão do extrato.
 
-### 9. Emitir Extrato Bancário
-
-Este endpoint permite emitir um extrato bancário para uma conta bancária específica.
-
-Endpoint: GET /contas/extrato
-
-Parâmetros:
-
-numero_conta (string, obrigatório): Número da conta bancária para emitir o extrato.
-senha (string, obrigatório): Senha para autenticar a emissão do extrato.
+Esta documentação fornece informações detalhadas sobre os endpoints e os parâmetros necessários para usar a API de Banco Virtual. Certifique-se de seguir as diretrizes e parâmetros especificados em cada endpoint ao realizar as operações bancárias. Se tiver dúvidas ou encontrar problemas, entre em contato com o suporte. Agradecemos por escolher o nosso serviço de banco virtual!
