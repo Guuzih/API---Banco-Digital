@@ -66,6 +66,8 @@ Este endpoint lista todas as contas bancárias existentes.
 - **Parâmetros:**
   - `senha_banco` (string, obrigatório): Senha de autenticação do banco.
 
+- [Voltar ao menu](#índice)
+
 ## Criar Conta Bancária
 
 ![criarconta](https://i.imgur.com/aUfMMTa.gif)
@@ -81,6 +83,8 @@ Este endpoint cria uma nova conta bancária.
   - `telefone` (string, obrigatório): Número de telefone do titular da conta.
   - `email` (string, obrigatório): Endereço de email do titular da conta.
   - `senha` (string, obrigatório): Senha para acessar a conta.
+    
+  - [Voltar ao menu](#índice)
 
 ## Atualizar Usuário da Conta Bancária
 
@@ -101,6 +105,8 @@ Este endpoint atualiza os dados do usuário associados a uma conta bancária esp
   - `telefone` (string, obrigatório): Novo número de telefone do titular da conta.
   - `email` (string, obrigatório): Novo endereço de email do titular da conta.
   - `senha` (string, obrigatório): Nova senha para acessar a conta.
+    
+  - [Voltar ao menu](#índice)
 
 ## Excluir Conta Bancária
 
@@ -112,6 +118,8 @@ Este endpoint exclui uma conta bancária existente.
 
 - **Parâmetros:**
   - `numeroConta` (string, obrigatório): Número da conta bancária a ser excluída.
+    
+  - [Voltar ao menu](#índice)
 
 ## Depositar
 
@@ -125,6 +133,8 @@ Este endpoint realiza um depósito em uma conta bancária específica.
 - **Parâmetros no Corpo (Body):**
   - `numero_conta` (string, obrigatório): Número da conta bancária de destino do depósito.
   - `valor` (number, obrigatório): Valor (em centavos) a ser depositado na conta.
+  - 
+  - [Voltar ao menu](#índice)
 
 ## Sacar
 
@@ -138,6 +148,8 @@ Este endpoint realiza o saque de um valor em uma determinada conta bancária.
   - `numero_conta` (string, obrigatório): Número da conta bancária de onde será realizado o saque.
   - `valor` (number, obrigatório): Valor (em centavos) a ser sacado da conta.
   - `senha` (string, obrigatório): Senha para autenticar a operação do saque.
+  - 
+  - [Voltar ao menu](#índice)
 
 ## Transferir
 
@@ -152,6 +164,8 @@ Este endpoint permite a transferência de recursos (dinheiro) de uma conta banc�
   - `numero_conta_destino` (string, obrigatório): Número da conta bancária de destino da transferência.
   - `valor` (number, obrigatório): Valor (em centavos) a ser transferido entre as contas.
   - `senha` (string, obrigatório): Senha para autenticar a operação de transferência.
+  - 
+  - [Voltar ao menu](#índice)
 
 ## Consultar Saldo da Conta Bancária
 
@@ -164,6 +178,8 @@ Este endpoint retorna o saldo de uma conta bancária específica.
 - **Parâmetros de Consulta (Query Params):**
   - `numero_conta` (string, obrigatório): Número da conta bancária para consultar o saldo.
   - `senha` (string, obrigatório): Senha para autenticar a consulta de saldo.
+  - 
+  - [Voltar ao menu](#índice)
 
 ## Emitir Extrato Bancário
 
@@ -176,4 +192,5 @@ Este endpoint lista as transações realizadas de uma conta específica.
 - **Parâmetros de Consulta (Query Params):**
   - `numero_conta` (string, obrigatório): Número da conta bancária para emitir o extrato.
   - `senha` (string, obrigatório): Senha para autenticar a emissão do extrato.
-
+    
+  - [Voltar ao menu](#índice)
