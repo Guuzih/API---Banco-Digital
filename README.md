@@ -39,6 +39,8 @@ Neste desafio, fomos desafiados a aplicar o conhecimento adquirido durante o seg
 
 Utilizando o Insomnia, importe o arquivo `rotas_insomnia` disponível junto com o projeto.
 
+![insomnia](https://i.imgur.com/2cgKebH.gif)
+
 # Documentação API
 
 ## Índice
@@ -55,6 +57,8 @@ Utilizando o Insomnia, importe o arquivo `rotas_insomnia` disponível junto com 
 
 ## Listar Contas Bancárias
 
+![listarconta](https://i.imgur.com/G88TkRm.gif)
+
 **Endpoint:** `GET /contas?senha_banco=Cubos123Bank`
 
 Este endpoint lista todas as contas bancárias existentes.
@@ -63,6 +67,8 @@ Este endpoint lista todas as contas bancárias existentes.
   - `senha_banco` (string, obrigatório): Senha de autenticação do banco.
 
 ## Criar Conta Bancária
+
+![criarconta](https://i.imgur.com/aUfMMTa.gif)
 
 **Endpoint:** `POST /contas`
 
@@ -77,6 +83,8 @@ Este endpoint cria uma nova conta bancária.
   - `senha` (string, obrigatório): Senha para acessar a conta.
 
 ## Atualizar Usuário da Conta Bancária
+
+![atualizar](https://i.imgur.com/NgxiMnV.gif)
 
 **Endpoint:** `PUT /contas/:numeroConta/usuario`
 
@@ -96,6 +104,8 @@ Este endpoint atualiza os dados do usuário associados a uma conta bancária esp
 
 ## Excluir Conta Bancária
 
+![excluir](https://i.imgur.com/kEs4J6O.gif)
+
 **Endpoint:** `DELETE /contas/:numeroConta`
 
 Este endpoint exclui uma conta bancária existente.
@@ -104,6 +114,9 @@ Este endpoint exclui uma conta bancária existente.
   - `numeroConta` (string, obrigatório): Número da conta bancária a ser excluída.
 
 ## Depositar
+
+![deposito](https://i.imgur.com/PkmGikY.gif)
+
 
 **Endpoint:** `POST /transacoes/depositar`
 
@@ -115,6 +128,8 @@ Este endpoint realiza um depósito em uma conta bancária específica.
 
 ## Sacar
 
+![sacar](https://i.imgur.com/R1iZfZr.gif)
+
 **Endpoint:** `POST /transacoes/sacar`
 
 Este endpoint realiza o saque de um valor em uma determinada conta bancária.
@@ -125,6 +140,8 @@ Este endpoint realiza o saque de um valor em uma determinada conta bancária.
   - `senha` (string, obrigatório): Senha para autenticar a operação do saque.
 
 ## Transferir
+
+![transferir](https://i.imgur.com/Se8zWbj.gif)
 
 **Endpoint:** `POST /transacoes/transferir`
 
@@ -138,6 +155,8 @@ Este endpoint permite a transferência de recursos (dinheiro) de uma conta banc�
 
 ## Consultar Saldo da Conta Bancária
 
+![consultarsaldo](https://i.imgur.com/b2Oiyq3.gif)
+
 **Endpoint:** `GET /contas/saldo`
 
 Este endpoint retorna o saldo de uma conta bancária específica.
@@ -148,6 +167,8 @@ Este endpoint retorna o saldo de uma conta bancária específica.
 
 ## Emitir Extrato Bancário
 
+![extrato](https://i.imgur.com/uPeIhlR.gif)
+
 **Endpoint:** `GET /contas/extrato`
 
 Este endpoint lista as transações realizadas de uma conta específica.
@@ -156,4 +177,3 @@ Este endpoint lista as transações realizadas de uma conta específica.
   - `numero_conta` (string, obrigatório): Número da conta bancária para emitir o extrato.
   - `senha` (string, obrigatório): Senha para autenticar a emissão do extrato.
 
-Esta documentação fornece informações detalhadas sobre os endpoints e os parâmetros necessários para usar a API de Banco Virtual. Certifique-se de seguir as diretrizes e parâmetros especificados em cada endpoint ao realizar as operações bancárias. Se tiver dúvidas ou encontrar problemas, entre em contato com o suporte. Agradecemos por escolher o nosso serviço de banco virtual!
